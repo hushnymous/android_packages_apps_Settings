@@ -14,17 +14,65 @@
      limitations under the License.
 -->
 
-<com.android.settings.fuelgauge.BatteryHistoryChart
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- MUTT -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="?android:attr/listPreferredItemHeight"
-    android:gravity="center_vertical"
-    android:id="@+android:id/battery_history_chart"
-    android:paddingEnd="?android:attr/scrollbarSize"
-    android:textAppearance="?android:attr/textAppearanceMedium"
-    android:shadowRadius="4"
-    android:shadowColor="?android:attr/colorBackground"
-    android:shadowDx="2"
-    android:shadowDy="2">
-</com.android.settings.fuelgauge.BatteryHistoryChart>
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="5dip"
+    android:paddingTop="5dip" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mutt_slide_head" />
+
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="horizontal"
+	    android:paddingTop="5dip"
+	    android:paddingBottom="5dip"
+	     >
+
+	    <TextView
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:text="@string/mutt_slide_left"
+	        android:gravity = "center"
+	        android:layout_weight=".25" />
+
+	    <SeekBar
+	        android:id="@+id/mutt_slider"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft ="15dp"
+	        android:paddingRight ="15dp"
+	        android:max="100"
+	        android:progress="50"
+	        android:layout_weight=".5" />
+
+	    <TextView
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:text="@string/mutt_slide_right"
+	        android:gravity = "center"
+	        android:layout_weight=".25" />
+	</LinearLayout>
+
+    <com.android.settings.fuelgauge.BatteryHistoryChart
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+android:id/battery_history_chart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        android:paddingEnd="?android:attr/scrollbarSize"
+        android:shadowColor="?android:attr/colorBackground"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:textAppearance="?android:attr/textAppearanceMedium" >
+    </com.android.settings.fuelgauge.BatteryHistoryChart>
+
+</LinearLayout>

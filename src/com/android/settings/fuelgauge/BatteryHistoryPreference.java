@@ -22,6 +22,7 @@ import android.os.BatteryStats;
 import android.preference.Preference;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.android.settings.R;
@@ -34,6 +35,8 @@ import com.android.settings.R;
 public class BatteryHistoryPreference extends Preference {
 
     private BatteryStats mStats;
+    // MUTT
+    private SeekBar muttSeekBar; 
 
     public BatteryHistoryPreference(Context context, BatteryStats stats) {
         super(context);
@@ -52,5 +55,26 @@ public class BatteryHistoryPreference extends Preference {
         BatteryHistoryChart chart = (BatteryHistoryChart)view.findViewById(
                 R.id.battery_history_chart);
         chart.setStats(mStats);
+        
+        // MUTT
+        muttSeekBar = (SeekBar) view.findViewById(R.id.mutt_slider);
+        muttSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        	int mProgress;
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				mStats.setScale(mProgress);
+			}
+			
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+				
+			}
+			
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				mProgress = progress;
+			}
+		});
     }
 }
